@@ -1,0 +1,119 @@
+{% extends "index/index.html" %}
+{% block content%}
+<div style="height:50px"></div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card bg-info shadow">
+                <div class="card-header"><h2>等待的订单</h2></div>
+                <div class="card-body"><h3>{{dengdai}}</h3></div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card bg-info shadow">
+                <div class="card-header"><h2>配送中的订单</h2></div>
+                <div class="card-body"><h3>{{zhengzai}}</h3></div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card bg-info shadow">
+                <div class="card-header"><h2>完成的订单</h2></div>
+                <div class="card-body"><h3>{{songda}}</h3></div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<hr>
+<br>
+<br>
+<br>
+<div class="contatiner-fluid">
+    <div class="row">
+        <div class="col-md-6">
+            <h2> 数量：{{shuliang}}</h2>
+        </div>
+        <div class="col-md-6">
+            <a href="{% url 'crate' %}" class="btn btn-lg  btn-out line-primary">创建用户 </a>
+         </div>
+    </div>
+    </div>
+<hr>
+
+<div class="contatiner-fluid">
+    <div class="row">
+        <div class="col-md-6 text-center">
+
+            <table class="table">
+                <thead class="thead-light">
+                <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">name</th>
+                    <th scope="col">dianhua</th>
+                    <th scope="col">email</th>
+                    <th scope="col">修改</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for i in yonghu reversed%}
+                <tr>
+
+                    <td scope="col">{{i.id}}</td>
+                    <td scope="col">{{i.name}}</td>
+                    <td scope="col">{{i.dianhua}}</td>
+                    <td >{{i.emal}}</td>
+                    <td>
+                        <a href="{% url 'gai'%}" class="btn btn-sm btn-info">修改</a>
+                    </td>
+
+
+                </tr>
+                {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-6 text-center">
+            <h4> sdf </h4>
+            <table class="table">
+                <thead class="thead-light">
+
+                </thead>
+                <tbody>
+
+                <tr>
+
+                    <th scope="col">id</th>
+                    <th scope="col">产品名称</th>
+                    <th scope="col">价格</th>
+                    <th scope="col">种类</th>
+                    <th scope="col">更新</th>
+                    <th scope="col">删除</th>
+                </tr>
+
+                </tbody>
+                {% for i in changjia reversed%}
+                <tr>
+
+                    <td scope="col">{{i.id}}</td>
+                    <td scope="col">{{i.name}}</td>
+                    <td scope="col">{{i.jiage}}</td>
+                    <td scope="col">{{i.zhonglei}}</td>
+                    <td>
+                        <a href="{% url 'gengxin' i.id%}" class="btn btn-sm btn-warning">更新</a>
+                    </td>
+                    <td>
+                        <a href="{% url 'shanchu' i.id%} " class="btn btn-sm btn-danger">删除</a>
+                    </td>
+
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+<br>
+<div>
+
+</div>
+{% endblock %}
